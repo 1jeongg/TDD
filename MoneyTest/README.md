@@ -10,3 +10,7 @@
 - [ ] hashCode()
 - [ ] Equal null
 - [ ] Equal object
+- [x] 5CHF x 2 = 10CHF
+- [ ] Dollar/Franc 중복
+- [ ] 공용 equals
+- [ ] 공용 times

@@ -1,4 +1,5 @@
 import org.example.Dollar;
+import org.example.Franc;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -21,5 +22,12 @@ public class DollarTest {
         assertTrue(new Dollar(5).equals(new Dollar(5)));
         assertFalse(new Dollar(5).equals(new Dollar(6)));
         // 해결되지 않은점: null이나 다른 객체들과 비교한다면?
+    }
+    @Test
+    @DisplayName("5CHF x 2 = 10CHF")
+    public void testFrancMultiplication(){
+        Franc five = new Franc(5);
+        assertEquals(new Franc(10), five.times(2));
+        assertEquals(new Franc(15), five.times(3));
     }
 }
