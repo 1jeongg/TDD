@@ -21,6 +21,8 @@ public class DollarTest {
     public void testEquality(){
         assertTrue(new Dollar(5).equals(new Dollar(5)));
         assertFalse(new Dollar(5).equals(new Dollar(6)));
+        assertTrue(new Franc(5).equals(new Franc(5)));
+        assertFalse(new Franc(5).equals(new Franc(6)));
         // 해결되지 않은점: null이나 다른 객체들과 비교한다면?
     }
     @Test

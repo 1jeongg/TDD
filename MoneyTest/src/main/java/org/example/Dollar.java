@@ -1,15 +1,10 @@
 package org.example;
 
-public class Dollar {
-    private int amount;
+public class Dollar extends Money{
     public Dollar(int amount){
         this.amount = amount;
     }
     public Dollar times(int multiplier){
         return new Dollar(multiplier * amount);
-    }
-    public boolean equals(Object object){
-        Dollar dollar = (Dollar) object;
-        return amount == dollar.amount;
     }
 }
