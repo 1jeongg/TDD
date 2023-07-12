@@ -6,12 +6,11 @@ public class Dollar extends Money{
         super(amount, currency);
     }
 
-    @Override
     public String currency() {
-        return "USD";
+        return currency;
     }
 
     public Money times(int multiplier){
-        return Money.dollar(multiplier * amount);
+        return new Money(multiplier * amount, currency);
     }
 }
