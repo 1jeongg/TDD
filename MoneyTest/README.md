@@ -11,7 +11,7 @@
 - [ ] Equal null
 - [ ] Equal object
 - [x] 5CHF x 2 = 10CHF
-- [ ] Dollar/Franc 중복
+- [x] Dollar/Franc 중복
 - [x] 공용 equals
 - [x] 공용 times
 - [x] Franc와 Dollar 비교하기
