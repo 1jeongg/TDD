@@ -2,6 +2,7 @@
 import org.example.Bank;
 import org.example.Expression;
 import org.example.Money;
+import org.example.Sum;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -45,4 +46,21 @@ public class DollarTest {
         Money reduced = bank.reduce(sum, "USD");
         assertEquals(Money.dollar(10), reduced);
     }
+    @Test
+    @DisplayName("$5 + $5 = $10 - Sum 반환")
+    public void testPlusReturnsSum(){
+        Money five = Money.dollar(5);
+        Expression result = five.plus(five);
+        Sum sum = (Sum) result;
+        assertEquals(five, sum.augend); // 피가산수
+        assertEquals(five, sum.addend);
+    }
+    @Test
+    @DisplayName("$3 + $4 = $7")
+    public void testReduceSum(){
+        Bank bank = new Bank();
+        Money result = bank.reduce(Money.dollar(1), "USD");
+        assertEquals(Money.dollar(1), result);
+    }
+
 }

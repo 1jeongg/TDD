@@ -2,6 +2,6 @@ package org.example;
 
 public class Bank {
     public Money reduce(Expression source, String to){
-        return Money.dollar(10); // 가짜 구현
+        return source.reduce(to);
     }
 }
