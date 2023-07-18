@@ -25,13 +25,6 @@ public class DollarTest {
         assertTrue(Money.franc(5).equals(Money.franc(5)));
     }
     @Test
-    @DisplayName("5CHF x 2 = 10CHF")
-    public void testFrancMultiplication(){
-        Money five = Money.franc(5);
-        assertEquals(Money.franc(10), five.times(2));
-        assertEquals(Money.franc(15), five.times(3));
-    }
-    @Test
     @DisplayName("통화")
     public void testCurrency(){
         assertEquals("USD", Money.dollar(1).currency());
@@ -86,4 +79,35 @@ public class DollarTest {
         Money result = bank.reduce(fiveBucks.plus(tenFrancs), "USD");
         assertEquals(Money.dollar(10), result);
     }
+
+    @Test
+    @DisplayName("Sum.plus().에 대한 테스트")
+    public void testSumPlusMoney(){
+        Expression fiveBucks = Money.dollar(5);
+        Expression tenFrancs = Money.franc(10);
+        Bank bank = new Bank();
+        bank.addRate("CHF", "USD", 2);
+        Expression sum = new Sum(fiveBucks, tenFrancs).plus(fiveBucks);
+        Money result = bank.reduce(sum, "USD");
+        assertEquals(Money.dollar(15), result);
+    }
+
+    @Test
+    @DisplayName("Expression.times 테스트")
+    public void testSumTimes(){
+        Expression fiveBucks = Money.dollar(5);
+        Expression tenFrancs = Money.franc(10);
+        Bank bank = new Bank();
+        bank.addRate("CHF", "USD", 2);
+        Expression sum = new Sum(fiveBucks, tenFrancs).times(2);
+        Money result = bank.reduce(sum, "USD");
+        assertEquals(Money.dollar(20), result);
+    }
+/*
+    @Test
+    @DisplayName("$5 + $5를 할 때 Money를 반환하는가?")
+    public void testPlusSameCurrencyReturnsMoney(){
+        Expression sum = Money.dollar(1).plus(Money.dollar(1));
+        assertTrue(sum instanceof Money);
+    }*/
 }
