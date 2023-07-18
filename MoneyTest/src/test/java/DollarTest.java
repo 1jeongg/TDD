@@ -71,8 +71,19 @@ public class DollarTest {
         assertEquals(Money.dollar(1), result);
     }
     @Test
-    @DisplayName("배열이 같은가?")
+    @DisplayName("동일한 통화에 대해 환율이 같은가?")
     public void testIdentityRate(){
         assertEquals(1, new Bank().rate("USD", "USD") );
+    }
+
+    @Test
+    @DisplayName("$5 + 10CHF = $10(환율이 2:1인 경우)")
+    public void testMixedAddition(){
+        Expression fiveBucks = Money.dollar(5);
+        Expression tenFrancs = Money.franc(10);
+        Bank bank = new Bank();
+        bank.addRate("CHF", "USD", 2);
+        Money result = bank.reduce(fiveBucks.plus(tenFrancs), "USD");
+        assertEquals(Money.dollar(10), result);
     }
 }
